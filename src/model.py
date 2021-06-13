@@ -13,14 +13,14 @@ def full(f):
 
 
 class Employee:
-    def __init__(self, country, city, warehouse, employee, name, address, date_of_birht, position):
+    def __init__(self, country, city, warehouse, employee, name, address, date_of_birth, position, position_city, country_city_warehouse):
         self.country = country
         self.city = city
         self.warehouse = warehouse
         self.employee = employee
         self.name = name
         self.address = address
-        self.date_of_birth = date_of_birht
+        self.date_of_birth = date_of_birth
         self.position = position
         self.position_city = f'{position};{city}'
         self.country_city_warehouse = f'{country};{city};{warehouse}'

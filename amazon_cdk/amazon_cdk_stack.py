@@ -12,9 +12,9 @@ class AmazonCdkStack(core.Stack):
 
         # create dynamo table
         employees_table = aws_dynamodb.Table(
-            self, config.TABLE_NAME,
+            self, 'employees',
             partition_key=aws_dynamodb.Attribute(
-                name='country-city-warehouse',
+                name='country_city_warehouse',
                 type=aws_dynamodb.AttributeType.STRING
             ),
             sort_key=aws_dynamodb.Attribute(
@@ -51,7 +51,7 @@ class AmazonCdkStack(core.Stack):
 
         employees_table.add_global_secondary_index(
             partition_key=aws_dynamodb.Attribute(
-                name='position-city',
+                name='position_city',
                 type=aws_dynamodb.AttributeType.STRING
             ),
             sort_key=aws_dynamodb.Attribute(

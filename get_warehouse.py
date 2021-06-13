@@ -7,5 +7,5 @@ def get_items(warehouse):
 
 
 if __name__ == '__main__':
-    warehouse = ''
+    warehouse = 'aiPBGqNiMz'
     print(str(get_items(warehouse)))

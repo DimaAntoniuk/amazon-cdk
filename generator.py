@@ -3,10 +3,10 @@ import string
 import uuid
 import datetime
 import json
-from ..src.model import Employee
+from src.model import Employee
 
 class Generator:
-    def generate_random_date():
+    def generate_random_date(self):
         start_date = datetime.date(2000, 1, 1)
         end_date = datetime.date(2002, 1, 1)
 
@@ -15,7 +15,7 @@ class Generator:
         random_number_of_days = random.randrange(days_between_dates)
         random_date = start_date + datetime.timedelta(days=random_number_of_days)
 
-        return random_date
+        return random_date.strftime('%Y-%m-%d')
 
 
     def genrate_item(self):
@@ -24,7 +24,7 @@ class Generator:
             country = ''.join(random.choice(letters) for _ in range(10)),
             city = ''.join(random.choice(letters) for _ in range(10)),
             warehouse = ''.join(random.choice(letters) for _ in range(10)),
-            employee = uuid.uuid4(),
+            employee = str(uuid.uuid4()),
             name = ''.join(random.choice(letters) for _ in range(5)),
             address = ''.join(random.choice(letters) for _ in range(12)),
             date_of_birth = self.generate_random_date(),
@@ -37,7 +37,7 @@ class Generator:
         with open('items.json', 'w') as items_file:
             items = []
             
-            for _ in number:
+            for _ in range(number):
                 item = self.genrate_item()
                 items.append(item)
             
@@ -48,4 +48,4 @@ class Generator:
 
 if __name__ == '__main__':
     generator = Generator()
-    generator.generate_items()
+    generator.generate_items(5)

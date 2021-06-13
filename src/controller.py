@@ -19,9 +19,9 @@ class Controller:
             print(f'{e.messages}')
         try:
             response = self.table.put_item(Item=self.schema.dump(new_employee))
+            print('New Employee added')
         except ClientError as e:
             print(f'{e}')
-        print('New Employee added')
 
 
 
@@ -81,13 +81,13 @@ class Controller:
         try:
             response = self.table.query(
                 IndexName='position-city-index',
-                KeyConditionExpression=Key('position-city').eq(f'{position};{city}')
+                KeyConditionExpression=Key('position_city').eq(f'{position};{city}')
             )
             items = response['Items']
             while 'LastEvaluetionKey' in response:
                 response = self.table.query(
                     IndexName='position-city-index',
-                    KeyConditionExpression=Key('position-city').eq(f'{position};{city}'),
+                    KeyConditionExpression=Key('position_city').eq(f'{position};{city}'),
                     ExlusiveStartKey=response['LastEvaluetedKey']
                 )
                 items.extend(response['Items'])

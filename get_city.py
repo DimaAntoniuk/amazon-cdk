@@ -7,5 +7,5 @@ def get_items(city):
 
 
 if __name__ == '__main__':
-    city = ''
+    city = 'eOSRWnPGBZ'
     print(str(get_items(city)))
